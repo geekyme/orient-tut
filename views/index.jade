@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p hi, #{name}
+  p Welcome to #{title}
+  p Your session #{sess}
+  if posts.length > 0
+    each post in posts
+      p 
+        b= post.title
+      p= post.text
+      p= post.creation_date.toLocaleDateString()
+      if post.out && post.out.length > 0
+        p Tags: 
+          each toTagEdge in post.out
+            span= toTagEdge.in.name + "(" + toTagEdge.in.in.length + ") "
+  else
+    h3 There are no posts in this blog!
+  a(href="/new_post") Insert new blog post

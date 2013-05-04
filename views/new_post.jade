@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  form(action="new_post",method="post")
+    p
+      label Title
+      input(name="title",type="text")
+    p
+      label Text
+      textarea(name="text",rows="5",cols="40")
+    input(type="submit")
+    p
+      label Tags(comma separated)
+      input(name="tags",type="text")
