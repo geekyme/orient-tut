@@ -8,7 +8,8 @@ exports.init = function(orient, callback) {
 };
 
 exports.index = function(req, res){
-		req.session.name = req.session.name ? req.session.name : "visitor"+Math.floor(Math.random()*1000000);
+		req.session.name = req.session.name ? req.session.name : "Mr. visitor"+Math.floor(Math.random()*1000000);
+        req.session.test = 'testing123';
     module.db.command("select from Post order by creation_date desc", { fetchPlan: "*:2" }, function(err, posts) {
         res.render('index', {
             title: 'Express + OrientDB blog',
@@ -20,6 +21,8 @@ exports.index = function(req, res){
 };
 
 exports.new_post_form = function(req, res) {
+    //testing alter session object
+    req.session.posting = true;
     res.render("new_post", { title: "New post" });
 };
 
